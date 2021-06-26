@@ -21,18 +21,21 @@ import argparse
 parser = argparse.ArgumentParser(description="ttyrec transcoder")
 parser.add_argument(
     'source_encoding',
-    nargs='?',
     help="encoding of original ttyrec"
 )
 parser.add_argument(
     'target_encoding',
-    nargs='?',
     help="target encoding of ttyrec"
 )
-parser.add_argument('path', nargs='?', help="path to source ttyrec")
+parser.add_argument(
+    'path',
+    nargs='?',
+    default=sys.stdin.buffer,
+    help="path to source ttyrec (if omitted - read from stdin)"
+    )
 parser.add_argument(
     '-o', '--output', default=False,
-    help="path to target ttyrec (if none - print to stdout)"
+    help="path to target ttyrec (if omitted - print to stdout)"
 )
 args = parser.parse_args()
 
